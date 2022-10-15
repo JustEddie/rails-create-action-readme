@@ -40,3 +40,80 @@ Processing by PostsController#show as HTML
   [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
   Rendered posts/show.html.erb within layouts/application (0.4ms)
 Completed 200 OK in 27ms (Views: 10.4ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "posts" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Title Goes Here"], ["description", "Desc goes here..."], ["created_at", "2022-10-14 13:46:40.015891"], ["updated_at", "2022-10-14 13:46:40.015891"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/" for ::1 at 2022-10-15 15:50:55 +1100
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Parameters: {"internal"=>true}
+  Rendering /Users/eddie/.rvm/gems/ruby-2.6.8/gems/railties-5.0.7.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/eddie/.rvm/gems/ruby-2.6.8/gems/railties-5.0.7.2/lib/rails/templates/rails/welcome/index.html.erb (1.3ms)
+Completed 200 OK in 6ms (Views: 3.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/new" for ::1 at 2022-10-15 15:51:09 +1100
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 169ms (Views: 160.3ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/posts" for ::1 at 2022-10-15 15:51:13 +1100
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"kL0w+G1mo1HCzkZc2QZY6O6DDYSSL3KYmTKRkvc/I1W860Kd5TOJoC/B/aAaD6fOaYYI1ChK2m99nDlg62qkcg==", "title"=>"d", "description"=>"d", "commit"=>"Submit Post"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "posts" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "d"], ["description", "d"], ["created_at", "2022-10-15 04:51:13.933242"], ["updated_at", "2022-10-15 04:51:13.933242"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+No template found for PostsController#create, rendering head :no_content
+Completed 204 No Content in 21ms (ActiveRecord: 1.7ms)
+
+
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" ORDER BY "posts"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+Started GET "/posts/new" for ::1 at 2022-10-15 15:53:19 +1100
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 27ms (Views: 20.9ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/posts" for ::1 at 2022-10-15 15:53:24 +1100
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YXmVuOVWWicKcgP+m+gmv4Fnvozkljl65oHwmPM/MNFNL+fdbQNw1ud9uAJY4dmZBmK73F7zkY0CL1hq72q39g==", "title"=>"dd", "description"=>"gadf", "commit"=>"Submit Post"}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "posts" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "dd"], ["description", "gadf"], ["created_at", "2022-10-15 04:53:24.698604"], ["updated_at", "2022-10-15 04:53:24.698604"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 2.1ms)
+
+
+  
+ActionController::UrlGenerationError (No route matches {:action=>"show", :controller=>"posts", :id=>nil} missing required keys: [:id]):
+  
+app/controllers/posts_controller.rb:19:in `create'
+  Rendering /Users/eddie/.rvm/gems/ruby-2.6.8/gems/actionpack-5.0.7.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/eddie/.rvm/gems/ruby-2.6.8/gems/actionpack-5.0.7.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/eddie/.rvm/gems/ruby-2.6.8/gems/actionpack-5.0.7.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.9ms)
+  Rendering /Users/eddie/.rvm/gems/ruby-2.6.8/gems/actionpack-5.0.7.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/eddie/.rvm/gems/ruby-2.6.8/gems/actionpack-5.0.7.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.5ms)
+  Rendering /Users/eddie/.rvm/gems/ruby-2.6.8/gems/actionpack-5.0.7.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/eddie/.rvm/gems/ruby-2.6.8/gems/actionpack-5.0.7.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.3ms)
+  Rendered /Users/eddie/.rvm/gems/ruby-2.6.8/gems/actionpack-5.0.7.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (13.3ms)
+Started POST "/posts" for ::1 at 2022-10-15 15:54:00 +1100
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YXmVuOVWWicKcgP+m+gmv4Fnvozkljl65oHwmPM/MNFNL+fdbQNw1ud9uAJY4dmZBmK73F7zkY0CL1hq72q39g==", "title"=>"dd", "description"=>"gadf", "commit"=>"Submit Post"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "dd"], ["description", "gadf"], ["created_at", "2022-10-15 04:54:00.275428"], ["updated_at", "2022-10-15 04:54:00.275428"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/posts/5
+Completed 302 Found in 8ms (ActiveRecord: 1.9ms)
+
+
+Started GET "/posts/5" for ::1 at 2022-10-15 15:54:00 +1100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 10ms (Views: 7.0ms | ActiveRecord: 0.1ms)
+
+
